@@ -12,7 +12,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
   outline: 0;
   font-weight: inherit;
   font-style: inherit;
-  font-size: 100%;
+  font-size: 1em;
   font-family: inherit;
   vertical-align: baseline;
 }
@@ -30,7 +30,6 @@ a img {
 a {
 	text-decoration: none;
 	color: #555;
-	font-size: 12pt;
 }
 a:hover {
 	text-decoration: underline;
@@ -39,13 +38,13 @@ a:hover {
 html {
   background: #eeeeee;
 }
-  body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    line-height: 1.4em;
-    background: #eeeeee;
-    color: #333333;
-  }
+body {
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 12px;
+line-height: 1.2em;
+background: #eeeeee;
+color: #333333;
+}
 
 #nudgeapp {
   width: 480px;
@@ -71,7 +70,7 @@ html {
   #create-nudge div {
 	height: 50px;
     width: 466px;
-    font-size: 24px;
+    font-size: 16px;
 	font-style: italic;
     font-family: inherit;
     line-height: 50px;
@@ -98,10 +97,9 @@ html {
   margin-top: 10px;
 }
   #nudge-list li {
-    padding: 12px 20px 11px 0;
+    padding: 10px 20px 10px 0;
     position: relative;
-    font-size: 24px;
-    line-height: 1.1em;
+    font-size: 12px;
     border-bottom: 1px solid #cccccc;
   }
     #nudge-list li:after {
@@ -150,8 +148,8 @@ html {
   }
   #nudge-list .nudge-destroy {
     position: absolute;
-    right: 5px;
-    top: 14px;
+    right: 0px;
+    top: 8px;
     display: none;
     cursor: pointer;
     width: 20px;
@@ -321,8 +319,8 @@ html {
 
 .shareIcon {
     width: 16px;
-    padding-right: 10px;
-    padding-top: 8px;
+	height:16px;
+	padding-right:4px;
     float: right;
 }
 #nudgetweets {
