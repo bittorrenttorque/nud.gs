@@ -1,88 +1,103 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset='utf-8'>
+	<head>
+		<title>Nud.gs</title>
+		<link href="nudgs.css" media="all" rel="stylesheet" type="text/css"/>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+		<script src="http://jquery-json.googlecode.com/files/jquery.json-2.3.min.js"></script>
+		<script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+		<script src="http://documentcloud.github.com/backbone/backbone.js"></script>
+		<script src="../btapp/backbone.btapp.js" type="text/javascript"></script>
+		<script src="nudgs.js"></script>
+		<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+	</head>
 
-  <title>pwmckenna/nud.gs @ GitHub</title>
+	<body>
+		<div id="nudgetweets">
+			<script>
+			new TWTR.Widget({
+			  version: 2,
+			  type: 'search',
+			  search: 'http://nud.gs/',
+			  interval: 3000,
+			  title: 'Recent Nud.gings',
+			  width: 'auto',
+			  height: 300,
+			  theme: {
+				shell: {
+				  background: '#ccc',
+				  color: '#ffffff'
+				},
+				tweets: {
+				  background: '#ffffff',
+				  color: '#444444',
+				  links: '#1985b5'
+				}
+			  },
+			  features: {
+				scrollbar: true,
+				loop: false,
+				live: true,
+				behavior: 'all'
+			  }
+			}).render().start();
+			</script>
+		</div>
+		
+		<!-- Nudge App Interface -->
+		<div id="nudgeapp">
+			<div class="title">
+				<h1>Nud.gs!</h1>
+			</div>
+			<div class="content">
+			<div id="create-nudge">
+				<div id="new-nudge">
+					Click to nudge a file
+				</div>
+			</div>
+				<div id="nudges">
+					<ul id="nudge-list">
+					</ul>
+				</div>
+				<div id="nudge-stats">
+				</div>
+			</div>
+		</div>
+		<ul id="instructions">
+			<li>Wanna take a look under the hood?</li>
+			<li><a href="../../docs/nudges.html">View the annotated source.</a></li>
+		</ul>
+		<div id="credits">
+			Inspired by <a href="http://documentcloud.github.com/backbone/examples/todos/index.html">Todos</a> by
+			<br/>
+			<a href="http://jgn.me/">J&eacute;r&ocirc;me Gravel-Niquet</a>
+		</div>
 
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #3dbbc5;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #c2443a; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #c2443a; }
-    h3 { text-align: center; color: #c2443a; }
-    a { color: #c2443a; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
-</head>
+		<!-- Templates -->
+		<script type="text/template" id="item-template">
+			<div class="nudge">
+				<div class="display">
+					<div class="nudge-text">
+					</div>
+					<div class="nudge-link">
+					</div>
+					<span class="nudge-destroy">
+					</span>
+				</div>
+				<div class="edit">
+					<input class="nudge-input" type="text" value="" />
+				</div>
+			</div>
+		</script>
 
-<body>
-  <a href="https://github.com/pwmckenna/nud.gs"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+		<script type="text/template" id="stats-template">
+			<% if (total) { %>
+			<span class="nudge-count">
+				<span class="number"><%= remaining %></span>
+				<span class="word"><%= remaining == 1 ? 'file' : 'files' %></span> nudged.
+			</span>
+			<% } %>
+		</script>
 
-  <div id="container">
-
-    <div class="download">
-      <a href="https://github.com/pwmckenna/nud.gs/zipball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
-      <a href="https://github.com/pwmckenna/nud.gs/tarball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
-    </div>
-
-    <h1><a href="https://github.com/pwmckenna/nud.gs">nud.gs</a>
-      <span class="small">by <a href="https://github.com/pwmckenna">pwmckenna</a></span></h1>
-
-    <div class="description">
-      nudge your stuff
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-      <h2>Authors</h2>
-      <p>Patrick (patrick@bittorrent.com)<br/>      </p>
-    
-
-    
-      <h2>Contact</h2>
-      <p>Patrick Williams (patrick@bittorrent.com)<br/>      </p>
-    
-
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="https://github.com/pwmckenna/nud.gs/zipball/master">zip</a> or
-      <a href="https://github.com/pwmckenna/nud.gs/tarball/master">tar formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/pwmckenna/nud.gs</pre>
-    </p>
-
-    <div class="footer">
-      get the source code on GitHub : <a href="https://github.com/pwmckenna/nud.gs">pwmckenna/nud.gs</a>
-    </div>
-
-  </div>
-
-</body>
+	</body>
 </html>
