@@ -64,6 +64,7 @@ body {
 	-moz-box-shadow: 5px 5px 2px #888;
 	-webkit-box-shadow: 5px 5px 2px #888;
 	box-shadow: 5px 5px 12px 2px #888;
+	background-color: #eee;
 }
 
 #nudgetweets {

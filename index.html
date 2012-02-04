@@ -13,6 +13,7 @@
 	</head>
 
 	<body>
+		<!-- Twitter Nudge View (Left Pane) -->
 		<div id="nudgetweets">
 			<script>
 			new TWTR.Widget({
@@ -22,7 +23,7 @@
 			  interval: 3000,
 			  title: 'Recent Nud.gings',
 			  width: 'auto',
-			  height: 300,
+			  height: 'auto',
 			  theme: {
 				shell: {
 				  background: '#ccc',
@@ -44,7 +45,7 @@
 			</script>
 		</div>
 		
-		<!-- Nudge App Interface -->
+		<!-- Main Nudge View (Center Pane) -->
 		<div id="nudgeapp">
 			<div class="title">
 				<h1>Nud.gs!</h1>
@@ -63,16 +64,12 @@
 				</div>
 			</div>
 		</div>
-		<ul id="instructions">
-			<li>Wanna take a look under the hood?</li>
-			<li><a href="../../docs/nudges.html">View the annotated source.</a></li>
-		</ul>
-		<div id="credits">
-			Inspired by <a href="http://documentcloud.github.com/backbone/examples/todos/index.html">Todos</a> by
-			<br/>
-			<a href="http://jgn.me/">J&eacute;r&ocirc;me Gravel-Niquet</a>
+		
+		<div id="randomnudge">
 		</div>
-
+		
+		
+		
 		<!-- Templates -->
 		<script type="text/template" id="item-template">
 			<div class="nudge">
