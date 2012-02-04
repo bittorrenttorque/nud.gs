@@ -36,62 +36,113 @@ a:hover {
 }
 
 html {
-  background: #eeeeee;
 }
 body {
-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-font-size: 12px;
-line-height: 1.2em;
-background: #eeeeee;
-color: #333333;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	line-height: 1.2em;
+	color: #333333;
+	overflow:hidden;
+	position:absolute;
+	left:0px;
+	right:0px;
+	top:0px;
+	bottom:0px;
+	background: #eee;
+}
+
+#nudgetweets, #randomnudge {
+	position: absolute;
+	height: auto;
+	min-width: 300px;
+	max-width: 300px;
+	top:8%;
+	max-height: 84%;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;  
+	-moz-box-shadow: 5px 5px 2px #888;
+	-webkit-box-shadow: 5px 5px 2px #888;
+	box-shadow: 5px 5px 12px 2px #888;
+}
+
+#nudgetweets {
+	right: 50%;
+	margin-right: 280px;
+}
+
+#randomnudge {
+	left: 50%;
+	margin-left:320px;
+	width: 300px;
+	min-height: 300px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;  
+	-moz-box-shadow: 5px 5px 2px #888;
+	-webkit-box-shadow: 5px 5px 2px #888;
+	box-shadow: 5px 5px 12px 2px #888;
+	border-top: 10px solid #CCC;
+	border-bottom: 10px solid #CCC;
+	background-color: white;
 }
 
 #nudgeapp {
-  width: 480px;
-  margin: 0 auto 40px;
-  background: white;
-  padding: 20px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 5px 6px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 5px 6px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.2) 0 5px 6px 0;
-  box-shadow: rgba(0, 0, 0, 0.2) 0 5px 6px 0;
+	position: absolute;
+	left: 50%;
+	width: 480px;
+	margin-left: -240px;
+	background: white;
+	padding: 20px;
+	top:4%;
+	bottom:4%;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;  
+	-moz-box-shadow: 5px 5px 2px #888;
+	-webkit-box-shadow: 5px 5px 2px #888;
+	box-shadow: 5px 5px 12px 2px #888;
+	border-top: 10px solid #CCC;
+	border-bottom: 10px solid #CCC;
 }
-  #nudgeapp h1 {
-    font-size: 36px;
-    font-weight: bold;
-    text-align: center;
-    padding: 20px 0 30px 0;
-    line-height: 1;
-  }
-
+#nudgeapp h1 {
+	font-size: 36px;
+	font-weight: bold;
+	text-align: center;
+	padding: 20px 0 30px 0;
+	line-height: 1;
+}
 #create-nudge {
-  position: relative;
+	position: relative;
 }
-  #create-nudge div {
+#create-nudge div {
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
 	height: 50px;
-    width: 466px;
-    font-size: 16px;
+	width: 466px;
+	font-size: 16px;
 	font-style: italic;
-    font-family: inherit;
-    line-height: 50px;
-    border: 0;
-    outline: none;
-    padding: 6px;
-    border-left: 2px solid #ccc;
-    border-top: 2px solid #ccc;
-    border-right: 2px solid #afafaf;
-    border-bottom: 2px solid #afafaf;
+	font-family: inherit;
+	line-height: 50px;
+	border: 0;
+	outline: none;
+	padding: 6px;
+	border-left: 2px solid #ccc;
+	border-top: 2px solid #ccc;
+	border-right: 2px solid #afafaf;
+	border-bottom: 2px solid #afafaf;
 	background-color:#efefef;
 	text-align:center;
 	cursor:pointer;
-  }
-  #create-nudge span {
-    position: absolute;
-    z-index: 999;
-    width: 170px;
-    left: 50%;
-    margin-left: -85px;
-  }
+}
+#create-nudge span {
+	position: absolute;
+	z-index: 999;
+	width: 170px;
+	left: 50%;
+	margin-left: -85px;
+}
 
 #nudge-list {
   margin-top: 10px;
@@ -210,7 +261,7 @@ color: #333333;
 
 #credits {
   width: 520px;
-  margin: 30px auto;
+  margin: 10px auto;
   color: #999;
   text-shadow: rgba(255, 255, 255, 0.8) 0 1px 0;
   text-align: center;
@@ -322,10 +373,4 @@ color: #333333;
 	height:16px;
 	padding-right:4px;
     float: right;
-}
-#nudgetweets {
-	width: 300px;
-	height: 100%;
-	position: absolute;
-	left: 0px;
 }
