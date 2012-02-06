@@ -22,9 +22,11 @@ $(function(){
 		},
 		// Re-render the contents of the nudge item.
 		render: function() {
+			//we generate the falcon urls from information gleen
 			var parameters = get_url_parameters(this.model.get('properties').get('streaming_url'));
 			var clientid = window.btapp.get('settings').get('remote_client_id');
 			var url = 'https://remote-staging.utorrent.com/talon/seed/' + clientid + '/content/' + parameters['sid'] + '/';
+			//we want to avoid showing the path of the files...just strip it down to the file name
 			var name = this.model.get('properties').get('name').replace(/^.*[\\\/]/, '');
 			
 			$(this.el).html(this.template(this.model.toJSON()));
@@ -94,13 +96,14 @@ $(function(){
 		// Pop up the torque file browser and when we get back the files the user has
 		// selected, create individual torrents for each of them. Hopefully by now we've
 		// worked out the falcon situation and the urls are already valid for use.
-	    window.btapp.bt.browseforfiles(function () {}, function(files) {
+		window.btapp.bt.browseforfiles(function () {}, function(files) {
+			// It might be nice to notify the user that we're nudging their files (creating torrents)...
 			_.each(files, function(value, key) {
 				window.btapp.bt.create(function(e) {}, '', [escape(value)], function(hash) {
-					//alert('created a nud');
+					// and that we're now done...
 				}, 'nudges', 'nudges');
 			});
-	    });
+		});
 	});
 	
 	// Set Falcon Settings
