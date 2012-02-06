@@ -53,26 +53,25 @@ body {
 
 #nudgetweets, #randomnudge {
 	position: absolute;
-	height: auto;
 	min-width: 300px;
 	max-width: 300px;
 	top:8%;
-	max-height: 84%;
+	bottom: 8%;
 	-moz-border-radius: 6px;
 	-webkit-border-radius: 6px;
-	border-radius: 6px;  
+ 	border-radius: 6px;  
 }
 
 #nudgetweets {
 	right: 50%;
 	margin-right: 280px;
+	height: auto;
 }
 
 #randomnudge {
 	left: 50%;
 	margin-left:320px;
 	width: 300px;
-	min-height: 300px;
 	-moz-border-radius: 6px;
 	-webkit-border-radius: 6px;
 	border-radius: 6px;  
