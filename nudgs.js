@@ -42,7 +42,7 @@ $(function(){
 		// call will be successful and pre-emptively remove the view
 		clear: function() {
 			var torrents = window.btapp.get('label').at(0).get('torrent');
-			var torrent = torrents.get('btapp/label/all/nudges/torrent/all/' + this.model.get('torrent') + '/');
+			var torrent = torrents.get(this.model.get('torrent'));
 			torrent.bt.remove(function() {});
 			this.remove();
 		}
@@ -53,7 +53,8 @@ $(function(){
 	// We're very specific in the filtering for this app, as we're only interested in torrents
 	// with the nudge label, and a smattering of other functionality, related to torrent creation
 	// and falcon setup/connections
-    window.btapp = new Btapp({
+    window.btapp = new Btapp;
+	window.btapp.connect({
 		/**
 		'username': 'patrick',
 		'password': 'password',
@@ -101,7 +102,7 @@ $(function(){
 		window.btapp.bt.browseforfiles(function () {}, function(files) {
 			// It might be nice to notify the user that we're nudging their files (creating torrents)...
 			_.each(files, function(value, key) {
-				window.btapp.bt.create(function(e) {}, '', [escape(value)], function(hash) {
+				window.btapp.bt.create(function(e) {}, '', [value], function(hash) {
 					// and that we're now done...
 				}, 'nudges', 'nudges');
 			});
