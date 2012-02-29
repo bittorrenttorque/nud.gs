@@ -92,9 +92,10 @@ body {
 	-moz-border-radius: 6px;
 	-webkit-border-radius: 6px;
 	border-radius: 6px;  
-	border-top: 10px solid #CCC;
-	border-bottom: 10px solid #CCC;
 	overflow:hidden;
+	-moz-box-shadow: 0px 0px 10px #BBB;
+	-webkit-box-shadow: 0px 0px 10px #BBB;
+	box-shadow: 0px 0px 10px #BBB;
 }
 #nudgeapp h1 {
 	font-size: 36px;
@@ -110,7 +111,7 @@ body {
 	-moz-border-radius: 6px;
 	-webkit-border-radius: 6px;
 	border-radius: 6px;
-	height: 50px;
+	height: 66px;
 	width: 466px;
 	font-size: 16px;
 	font-style: italic;
@@ -118,7 +119,6 @@ body {
 	line-height: 50px;
 	border: 0;
 	outline: none;
-	padding: 6px;
 	border-left: 2px solid #ccc;
 	border-top: 2px solid #ccc;
 	border-right: 2px solid #afafaf;
@@ -355,4 +355,46 @@ body {
 	height:16px;
 	padding-right:4px;
     float: right;
+}
+
+#nudge-button {
+	-moz-box-shadow:inset 0px 1px 0px 0px #80a6c9;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #80a6c9;
+	box-shadow:inset 0px 1px 0px 0px #80a6c9;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #8dbff0), color-stop(1, #4e5761) );
+	background:-moz-linear-gradient( center top, #8dbff0 5%, #4e5761 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#8dbff0', endColorstr='#4e5761');
+	background-color:#8dbff0;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #bfd5eb;
+	display:inline-block;
+	color:#ffffff;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #2f4a66;
+	
+	position:absolute;
+	left:0px;
+	right:0px;
+	top:0px;
+	bottom:0px;
+	
+	line-height:66px;
+	
+}
+#nudge-button:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #4e5761), color-stop(1, #8dbff0) );
+	background:-moz-linear-gradient( center top, #4e5761 5%, #8dbff0 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#4e5761', endColorstr='#8dbff0');
+	background-color:#4e5761;
+	text-decoration: none;
+}
+#nudge-button:active {
+	position:relative;
+	top:1px;
+	text-decoration: none;
 }

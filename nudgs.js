@@ -28,7 +28,7 @@ $(function(){
 			//we generate the falcon urls from information gleen
 			var parameters = get_url_parameters(this.model.get('properties').get('streaming_url'));
 			var clientid = window.btapp.get('settings').get('remote_client_id');
-			var url = 'https://remote-staging.utorrent.com/talon/seed/' + clientid + '/content/' + parameters['sid'] + '/';
+			var url = 'https://remote.utorrent.com/talon/seed/' + clientid + '/content/' + parameters['sid'] + '/';
 			//we want to avoid showing the path of the files...just strip it down to the file name
 			var name = this.model.get('properties').get('name').replace(/^.*[\\\/]/, '');
 			
@@ -41,7 +41,7 @@ $(function(){
 		// or two and conflict with the user's expectations...so we'll assume that the torrent remove
 		// call will be successful and pre-emptively remove the view
 		clear: function() {
-			var torrents = window.btapp.get('label').at(0).get('torrent');
+			var torrents = window.btapp.get('torrent');
 			var torrent = torrents.get(this.model.get('torrent'));
 			torrent.bt.remove(function() {});
 			this.remove();
@@ -119,5 +119,9 @@ $(function(){
 			var password = generate_random_string();
 			window.btapp.bt.connect_remote(function() {}, username, password);
 		}
+	});
+	
+	$('#nudges').click(function(e) {
+		e.preventDefault();
 	});
 });
