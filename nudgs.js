@@ -62,8 +62,8 @@ $(function(){
 		'id': 'btapp',
 		'url': 'btapp/',
 		'queries': [
-			'btapp/label/all/nudges/torrent/all/*/file/all/*/',
-			'btapp/label/all/nudges/torrent/all/*/remove/',
+			'btapp/torrent/all/*/file/all/*/',
+			'btapp/torrent/all/*/remove/',
 			'btapp/create/',
 			'btapp/browseforfiles/',
 			'btapp/settings/',
@@ -83,7 +83,7 @@ $(function(){
 	// apps will be most interested in listening for all files in all torrents the same way 
 	// this is done).
 	var listener = new BtappListener({'btapp': btapp});
-	listener.bind('btapp/label/all/nudges/torrent/all/*/file/all/*/', function(file) {
+	listener.bind(Btapp.QUERIES.FILES, function(file) {
 		var view = new NudgeView({model: file});
 		$("#nudge-list").append(view.render().el);	
 	});
