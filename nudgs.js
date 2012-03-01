@@ -29,10 +29,31 @@ $(function(){
 			var parameters = get_url_parameters(this.model.get('properties').get('streaming_url'));
 			var clientid = window.btapp.get('settings').get('remote_client_id');
 			var url = 'https://remote.utorrent.com/talon/seed/' + clientid + '/content/' + parameters['sid'] + '/';
+			
+			//we only want to render if we have a shortened version of the url...if we don't have one get one
+			//using the nud.gs shortening service and retry once we have it
+			var shortened = jQuery.jStorage.get(url);
+			if(!shortened) {
+				var mime = 'jpg';
+				$.ajax({
+					dataType: 'jsonp',
+					data: {'url': url, 'mime': mime},
+					jsonp: 'jsonp_callback',
+					url: 'http://nud.gs/shorten',
+					context: this,
+					success: function (data) {
+						jQuery.jStorage.set(url, data);
+						this.render();
+					},
+				});
+				return this;
+			}
+			
+			
 			//we want to avoid showing the path of the files...just strip it down to the file name
 			var name = this.model.get('properties').get('name').replace(/^.*[\\\/]/, '');
 			
-			var html = '<div><a target="_blank" title="' + url + '" href="' + url + '">' + name + '</a>' + tweetShare(url, name) + fbShare(url, name) + '</div>';
+			var html = '<div><a target="_blank" title="' + shortened + '" href="' + shortened + '">' + name + '</a>' + tweetShare(url, name) + fbShare(url, name) + '</div>';
 			this.$('.nudge-text').html(html);
 			return this;
 		},
