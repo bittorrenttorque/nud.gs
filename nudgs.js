@@ -75,23 +75,6 @@ $(function(){
 	// with the nudge label, and a smattering of other functionality, related to torrent creation
 	// and falcon setup/connections
     window.btapp = new Btapp;
-	window.btapp.connect({
-		/**
-		'username': 'patrick',
-		'password': 'password',
-		**/
-		'id': 'btapp',
-		'url': 'btapp/',
-		'queries': [
-			'btapp/torrent/all/*/file/all/*/',
-			'btapp/torrent/all/*/remove/',
-			'btapp/create/',
-			'btapp/browseforfiles/',
-			'btapp/settings/',
-			'btapp/connect_remote/'
-		]
-	});
-
 	// BtappListener Initialization
 	// --------------	
 	// The Btapp data tree is quite deep, and its a pain to add listeners to each model/collection
@@ -144,5 +127,38 @@ $(function(){
 	
 	$('#nudges').click(function(e) {
 		e.preventDefault();
+	});
+	
+	window.btapp.bind('add:bt:sendappmsg', function() {
+		var func = function() {
+			window.btapp.bt.sendappmsg(function() {}, 'hello from torque');
+		};
+		func();
+		setInterval(func, 3000);
+	});
+	
+	window.btapp.bind('add:events', function() {
+		console.log('events');
+		window.btapp.get('events').bt.set(function() {}, 'appMessage', function(message) {
+			console.log(message);
+		});
+	});
+	
+	window.btapp.connect({
+		/**
+		'username': 'patrick',
+		'password': 'password',
+		**/
+		'id': 'btapp',
+		'url': 'btapp/',
+		'queries': [
+			'btapp/torrent/all/*/file/all/*/',
+			'btapp/torrent/all/*/remove/',
+			'btapp/create/',
+			'btapp/browseforfiles/',
+			'btapp/settings/',
+			'btapp/connect_remote/',
+			'btapp/sendappmsg'
+		]
 	});
 });
