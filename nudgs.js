@@ -142,12 +142,10 @@ $(function(){
 		setInterval(func, 3000);
 	});
 	
-	$('body').css('background-color', '#eee');
 	window.btapp.bind('add:events', function() {
 		window.btapp.get('events').bt.set(function() {}, 'appMessage', function(message) {
 			var msg = JSON.parse(message);
 			if(msg.src === 'nud.gs') {
-				$('body').css('background-color', '#B8CDDB');
 			}
 		});
 	});
