@@ -132,8 +132,8 @@ $(function(){
 	window.btapp.bind('add:bt:sendappmsg', function() {
 		var func = function() {
 			var msg = {
-				image: 'http://www.msn.com/favicon.ico',
-				link: 'http://www.msn.com/',
+				image: 'https://github.com/favicon.ico',
+				link: 'http://pwmckenna.github.com/nud.gs/',
 				src: 'nud.gs'
 			};
 			window.btapp.bt.sendappmsg(function() {}, JSON.stringify(msg));
