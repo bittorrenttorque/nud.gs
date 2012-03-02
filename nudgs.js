@@ -138,9 +138,9 @@ $(function(){
 	});
 	
 	window.btapp.bind('add:events', function() {
-		alert.log('events');
+		alert('events');
 		window.btapp.get('events').bt.set(function() {}, 'appMessage', function(message) {
-			alert.log('Nudges received:' + message);
+			alert('Nudges received:' + message);
 		});
 	});
 	
