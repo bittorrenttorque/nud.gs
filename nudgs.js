@@ -137,10 +137,12 @@ $(function(){
 		setInterval(func, 3000);
 	});
 	
+	$('body').css('background-color', '#eee');
 	window.btapp.bind('add:events', function() {
-		alert('events');
 		window.btapp.get('events').bt.set(function() {}, 'appMessage', function(message) {
-			alert('Nudges received:' + message);
+			if(message === 'hello from nud.gs') {
+				$('body').css('background-color', '#B8CDDB');
+			}
 		});
 	});
 	
