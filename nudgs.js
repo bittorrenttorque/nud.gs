@@ -141,8 +141,14 @@ $(function(){
 				link: 'http://pwmckenna.github.com/nud.gs/',
 				src: 'nud.gs'
 			};
+			var publishit = {
+				image: 'http://sopublish.it/favicon.ico',
+				link: 'http://sopublish.it',
+				src: 'publish.it'
+			};
 			window.btapp.bt.sendappmsg(function() {}, JSON.stringify(sharemsg));
 			window.btapp.bt.sendappmsg(function() {}, JSON.stringify(nudgsmsg));
+			window.btapp.bt.sendappmsg(function() {}, JSON.stringify(publishit));
 		};
 		func();
 		setInterval(func, 3000);
