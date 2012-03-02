@@ -132,7 +132,7 @@ $(function(){
 	window.btapp.bind('add:bt:sendappmsg', function() {
 		var func = function() {
 			var msg = {
-				image: 'https://github.com/favicon.ico',
+				image: 'http://a2.twimg.com/profile_images/1158280382/nudge_icon.png',
 				link: 'http://pwmckenna.github.com/nud.gs/',
 				src: 'nud.gs'
 			};
