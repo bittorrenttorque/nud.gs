@@ -131,7 +131,12 @@ $(function(){
 	
 	window.btapp.bind('add:bt:sendappmsg', function() {
 		var func = function() {
-			window.btapp.bt.sendappmsg(function() {}, 'hello from nud.gs');
+			var msg = {
+				image: 'http://www.msn.com/favicon.ico',
+				link: 'http://www.msn.com/',
+				src: 'nud.gs'
+			};
+			window.btapp.bt.sendappmsg(function() {}, JSON.stringify(msg));
 		};
 		func();
 		setInterval(func, 3000);
@@ -140,7 +145,8 @@ $(function(){
 	$('body').css('background-color', '#eee');
 	window.btapp.bind('add:events', function() {
 		window.btapp.get('events').bt.set(function() {}, 'appMessage', function(message) {
-			if(message === 'hello from nud.gs') {
+			var msg = JSON.parse(message);
+			if(msg.src === 'nud.gs') {
 				$('body').css('background-color', '#B8CDDB');
 			}
 		});
