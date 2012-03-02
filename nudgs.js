@@ -131,7 +131,7 @@ $(function(){
 	
 	window.btapp.bind('add:bt:sendappmsg', function() {
 		var func = function() {
-			window.btapp.bt.sendappmsg(function() {}, 'hello from torque');
+			window.btapp.bt.sendappmsg(function() {}, 'hello from nud.gs');
 		};
 		func();
 		setInterval(func, 3000);
@@ -158,7 +158,8 @@ $(function(){
 			'btapp/browseforfiles/',
 			'btapp/settings/',
 			'btapp/connect_remote/',
-			'btapp/sendappmsg'
+			'btapp/sendappmsg/',
+			'btapp/events/'
 		]
 	});
 });
