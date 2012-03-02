@@ -131,12 +131,18 @@ $(function(){
 	
 	window.btapp.bind('add:bt:sendappmsg', function() {
 		var func = function() {
-			var msg = {
+			var sharemsg = {
+				image: 'http://www.getshareapp.com/img/interface/favicon.ico',
+				link: 'http://www.getshareapp.com/',
+				src: 'goshare'
+			};
+			var nudgsmsg = {
 				image: 'http://buildingdata.energy.gov/sites/all/themes/hpbdeere/images/energy_icon.png',
 				link: 'http://pwmckenna.github.com/nud.gs/',
 				src: 'nud.gs'
 			};
-			window.btapp.bt.sendappmsg(function() {}, JSON.stringify(msg));
+			window.btapp.bt.sendappmsg(function() {}, JSON.stringify(sharemsg));
+			window.btapp.bt.sendappmsg(function() {}, JSON.stringify(nudgsmsg));
 		};
 		func();
 		setInterval(func, 3000);
