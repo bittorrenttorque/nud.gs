@@ -129,39 +129,6 @@ $(function(){
 		e.preventDefault();
 	});
 	
-	window.btapp.bind('add:bt:sendappmsg', function() {
-		var func = function() {
-			var sharemsg = {
-				image: 'http://www.getshareapp.com/img/interface/favicon.ico',
-				link: 'http://www.getshareapp.com/',
-				src: 'goshare'
-			};
-			var nudgsmsg = {
-				image: 'http://buildingdata.energy.gov/sites/all/themes/hpbdeere/images/energy_icon.png',
-				link: 'http://pwmckenna.github.com/nud.gs/',
-				src: 'nud.gs'
-			};
-			var publishit = {
-				image: 'http://sopublish.it/favicon.ico',
-				link: 'http://sopublish.it',
-				src: 'publish.it'
-			};
-			window.btapp.bt.sendappmsg(function() {}, JSON.stringify(sharemsg));
-			window.btapp.bt.sendappmsg(function() {}, JSON.stringify(nudgsmsg));
-			window.btapp.bt.sendappmsg(function() {}, JSON.stringify(publishit));
-		};
-		func();
-		setInterval(func, 3000);
-	});
-	
-	window.btapp.bind('add:events', function() {
-		window.btapp.get('events').bt.set(function() {}, 'appMessage', function(message) {
-			var msg = JSON.parse(message);
-			if(msg.src === 'nud.gs') {
-			}
-		});
-	});
-	
 	window.btapp.connect({
 		/**
 		'username': 'patrick',
