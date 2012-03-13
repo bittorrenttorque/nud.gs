@@ -94,6 +94,7 @@ $(function(){
 	
 	// Hookup UI for nudge creation (nudging)
 	// --------------
+	var nudge_notifications = {};
 	$("#new-nudge").click(function() {
 		// Make sure that we're connected to the client...if not we should do some nice
 		// messaging to the user explaining why we've failed
@@ -106,8 +107,32 @@ $(function(){
 		window.btapp.bt.browseforfiles(function () {}, function(files) {
 			// It might be nice to notify the user that we're nudging their files (creating torrents)...
 			_.each(files, function(value, key) {
+				noty({
+					"text":"One sec. Nudging the shit out of " + value,
+					"theme":'mitgux',
+					"layout":"topRight",
+					"type":"alert",
+					"textAlign":"center",
+					"easing":"swing",
+					"animateOpen":{"height":"toggle"},
+					"animateClose":{"height":"toggle"},
+					"speed":"500",
+					"timeout":"",
+					"closable":false,
+					"closeOnSelfClick":false,
+					"onShow": function() { 
+						//this seems to be the only place where we have access to the dom element
+						//representing this noty...we need to store it off here so that we can
+						//remove it when we're done with it.
+						nudge_notifications[value] = this; 
+					}
+				});
+
 				window.btapp.bt.create(function(e) {}, '', [value], function(hash) {
-					// and that we're now done...
+					//we're done creating...successful or not we want to remove the noty
+					//representing this creation event.
+					$(nudge_notifications[value]).remove();
+					delete nudge_notifications[value];
 				}, 'nudges', 'nudges');
 			});
 		});
@@ -145,6 +170,7 @@ $(function(){
 			'btapp/connect_remote/',
 			'btapp/sendappmsg/',
 			'btapp/events/'
-		]
+		],
+		'poll_frequency': 1
 	});
 });
